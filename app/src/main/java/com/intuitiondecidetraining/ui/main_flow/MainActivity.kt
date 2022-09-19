@@ -37,7 +37,9 @@ class MainActivity : AppCompatActivity() {
             setupWithNavController(navController, appBarConfiguration)
             setSupportActionBar(this)
             setNavigationOnClickListener {
-                navController.navigateUp()
+                if (!navController.navigateUp()) {
+                    navController.navigate(R.id.mainFragment)
+                }
             }
             navController.addOnDestinationChangedListener { _, destination, arguments ->
                 when (destination.id) {
